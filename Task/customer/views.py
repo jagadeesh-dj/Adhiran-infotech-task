@@ -14,7 +14,7 @@ def Customer_list(request):
         return Response(serializer.data,status=status.HTTP_200_OK)
     
     elif request.method=='POST':
-        serializer=CustomerSerializer(result,many=True)
+        serializer=CustomerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
